@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style th:replace="/layout :: css"></style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-image: url('https://www.incimages.com/uploaded_files/image/1920x1080/getty_583734066_335273.jpg');
+        }
+    </style>
+</head>
+<body>
+<h1>Danh sách các quốc gia</h1>
+<table id="products">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    <tr th:each="c : ${country}">
+        <td th:text="${c.getId()}"></td>
+        <td><a th:href="@{/country/city-in(country_id=${c.getId()})}" th:text="${c.getName()}"></a></td>
+    </tr>
+</table>
+<a th:href="@{/city}">Back to home</a>
+<footer th:replace="/layout::footer"></footer>
+</body>
+</html>
